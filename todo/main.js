@@ -31,18 +31,18 @@ function addNewItem(){
 // Display list of items
 function showItems(){
     let itemList = fetchItemList();
-    output.innerHTML ='';
-    for(let i=0; i<itemList.length; i++){
-        output.innerHTML += '<li class="list-group-item">'+itemList[i]+
-        '<button onclick="removeItem(\''+itemList[i]+'\')" class="btn btn-danger float-right">Usuń</button>'+
-        '<button onclick="displayEditItem(\''+itemList[i]+'\')" class="btn btn-success float-right">Edytuj</button>'+
-        '</li>';
+    output.innerHTML = '';
+    if(itemList == null || itemList.length === 0){
+        output.innerHTML = 'Dodaj swoje pierwsze zadanie!';
+    } else {
+        for(let i=0; i<itemList.length; i++){
+            output.innerHTML += '<li class="list-group-item">'+itemList[i]+
+            '<button onclick="removeItem(\''+itemList[i]+'\')" class="btn btn-danger float-right">Usuń</button>'+
+            '<button onclick="displayEditItem(\''+itemList[i]+'\')" class="btn btn-success float-right">Edytuj</button>'+
+            '</li>';
+        }
     }
     itemForm.reset();
-    
-    if(output.innerHTML == ''){
-        output.innerHTML = 'Dodaj swoje pierwsze zadanie!';
-    }
 }
 
 //Remove item from Local Storage
